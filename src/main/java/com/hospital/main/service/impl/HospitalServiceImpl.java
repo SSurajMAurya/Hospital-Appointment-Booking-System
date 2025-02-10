@@ -50,7 +50,7 @@ public class HospitalServiceImpl implements HospitalService{
 
         String password = hospitalDto.getPassword();
 
-        Role role=  roleRepository.findByRoleName("ROLE_HOSPITAL").orElseThrow(()-> new ResourceNotFound("Role Not Found"));
+        Role role=  roleRepository.findByRoleName("HOSPITAL").orElseThrow(()-> new ResourceNotFound("Role Not Found"));
 
        Hospital hospital = mapper.map(hospitalDto, Hospital.class);
 

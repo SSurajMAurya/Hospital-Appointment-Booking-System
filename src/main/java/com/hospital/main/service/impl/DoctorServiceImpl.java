@@ -62,7 +62,7 @@ public class DoctorServiceImpl implements DoctorService {
         Hospital hospital =  hospitalRepository.findByEmail(hospitalEmail).orElseThrow(()-> new ResourceNotFound("Hospital Does Not Exist"));
         Departments departments= departmentRepository.findById(departmentId).orElseThrow(()-> new ResourceNotFound("Department Not Found"));
 
-        Role role=  roleRepository.findByRoleName("ROLE_DOCTOR").orElseThrow(()-> new ResourceNotFound("Role Not Found"));
+        Role role=  roleRepository.findByRoleName("DOCTOR").orElseThrow(()-> new ResourceNotFound("Role Not Found"));
         // doctorDto.setRole(ROLE.ROLE_DOCTOR);
 
 

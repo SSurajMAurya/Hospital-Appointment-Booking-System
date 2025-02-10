@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService{
 
         User user =  mapper.map(userDto, User.class);
 
-        Role patientRole=  roleRepository.findByRoleName("ROLE_PATIENT").orElseThrow(()-> new ResourceNotFound("Role Not Found"));
+        Role patientRole=  roleRepository.findByRoleName("PATIENT").orElseThrow(()-> new ResourceNotFound("Role Not Found"));
         user.setRole(patientRole);
 
         user.setPassword(password);

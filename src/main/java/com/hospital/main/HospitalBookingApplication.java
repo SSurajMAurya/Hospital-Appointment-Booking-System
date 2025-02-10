@@ -119,6 +119,8 @@ public class HospitalBookingApplication implements CommandLineRunner{
 		
 		// doctorRepository.save(doctor);
 
+		// System.out.println(passwordEncoder.encode("securepassword"));
+
 
 			
 

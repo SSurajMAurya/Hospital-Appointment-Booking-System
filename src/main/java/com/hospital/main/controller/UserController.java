@@ -3,6 +3,7 @@ package com.hospital.main.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ public class UserController {
 
     //Registering user Api
     @PostMapping
+    @PreAuthorize("hasAnyRole")
     public ResponseEntity<UserDto> createUserHandler(@RequestBody UserDto userDto){
 
        UserDto savedUser = userService.createUser(userDto);
@@ -71,6 +73,7 @@ public class UserController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('PATIENT')")
     public ResponseEntity<PageableResponse<UserDto>> getAllUsers(
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
