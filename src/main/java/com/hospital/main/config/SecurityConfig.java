@@ -81,6 +81,7 @@ public class SecurityConfig {
                    .requestMatchers(HttpMethod.POST , "/hospital").permitAll()
                    .requestMatchers(HttpMethod.POST , "/doctor").hasRole("HOSPITAL")
                    .requestMatchers( "/auth/**").permitAll()
+                   .requestMatchers( "/auth/login-with-google-user").permitAll()
                    .anyRequest().authenticated();
 
             // request.anyRequest().authenticated();  
