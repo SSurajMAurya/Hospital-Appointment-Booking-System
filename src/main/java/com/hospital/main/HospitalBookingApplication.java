@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.hospital.main.entities.Departments;
 import com.hospital.main.entities.Doctor;
@@ -24,6 +25,7 @@ import com.hospital.main.repository.UserRepository;
 import jakarta.persistence.EntityManager;
 
 @SpringBootApplication
+@EnableWebMvc
 public class HospitalBookingApplication implements CommandLineRunner{
 
 	@Autowired

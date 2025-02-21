@@ -19,10 +19,13 @@ import com.hospital.main.dto.UserDto;
 import com.hospital.main.service.UserService;
 import com.hospital.main.utility.ApiResponseMessage;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
+@Tag(name = "User Controller", description = "REST APIs related to User Entity")  // decription that shows on swagger
 public class UserController {
 
     @Autowired
@@ -74,6 +77,7 @@ public class UserController {
 
     @GetMapping
     @PreAuthorize("hasRole('PATIENT')")
+    @Operation(summary = "Get all users", description = "Fetch all users from the database")
     public ResponseEntity<PageableResponse<UserDto>> getAllUsers(
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,

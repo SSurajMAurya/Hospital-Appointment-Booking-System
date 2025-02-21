@@ -37,6 +37,15 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthenticationEntryPoint entryPoint;
 
+    private final String[] PUBLIC_URL ={
+
+        "/swagger-ui/**",
+        "/webjars/**",
+        "/swagger-resources/**",
+        "/v3/api-docs/**",
+        "/v2/api-docs/**"
+    };
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
@@ -76,13 +85,18 @@ public class SecurityConfig {
             //         .requestMatchers("/doctor/**").hasRole("DOCTOR")
             //         .anyRequest().authenticated();
 
-            request.requestMatchers( "/user/**").permitAll()
-                   .requestMatchers(HttpMethod.GET , "/user").authenticated()
-                   .requestMatchers(HttpMethod.POST , "/hospital").permitAll()
-                   .requestMatchers(HttpMethod.POST , "/doctor").hasRole("HOSPITAL")
-                   .requestMatchers( "/auth/**").permitAll()
-                   .requestMatchers( "/auth/login-with-google-user").permitAll()
-                   .anyRequest().authenticated();
+            request
+            .requestMatchers(PUBLIC_URL).permitAll()
+            // .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+            .anyRequest().permitAll();
+                   
+                //    .requestMatchers(HttpMethod.POST , "/hospital").permitAll()
+                //    .requestMatchers(HttpMethod.POST , "/doctor").hasRole("HOSPITAL")
+                //    .requestMatchers( "/auth/**").permitAll()
+                //    .requestMatchers( "/auth/login-with-google-user").permitAll()
+                //    .requestMatchers(PUBLIC_URL).permitAll()
+                //    .requestMatchers(HttpMethod.GET , "/user").authenticated()
+                //    .anyRequest().authenticated();
 
             // request.anyRequest().authenticated();  
 

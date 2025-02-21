@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hospital.main.entities.Role;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class UserDto {
 
     @Pattern(regexp = "^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+\\.)+[a-z]{2,5}$",message = "Invalid User Email !!")
     @NotBlank(message = "Email is required !!")
+    @Schema(description = "User's email address", example = "john.doe@example.com")
     private String email;
 
     private String address;
